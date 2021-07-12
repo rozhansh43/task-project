@@ -20,7 +20,7 @@
           <task-item 
           :task="task" 
           v-for="(task, index) in tasks"
-          @complete="completeTask"
+          @complete="completeTask(task)"
           @remove="removeTask(index)"
           :key="task.id"
           >
