@@ -7,9 +7,9 @@
       </div>
       <!-- form -->
       <div class="form">
-        <input type="text" placeholder="New Task" />
+        <input type="text" placeholder="New Task" v-model="newTask" @keyup.enter="addTask"/>
 
-        <button>
+        <button @click="addTask">
           <i class="fas fa-plus">
           </i>
         </button>
@@ -34,18 +34,18 @@
       </div>
       <!-- buttons -->
       <div class="clearBtns">
-        <button>
+        <button @click="clearCompleted">
           Clear completed
         </button>
 
-        <button>
+        <button @click="clearAll">
           Clear all
         </button>
       </div>
       <!-- pending task -->
       <div class="pendingTasks">
         <span>
-          Pending Tasks: {{ tasks.length }}
+          Pending Tasks: {{ incomplete }}
         </span>
       </div>
     </div>
@@ -56,5 +56,38 @@
 export default {
   name: "Task",
   props: ['tasks'],
+  data() {
+    return {
+      newTask:""
+    }
+  },
+  computed: {
+    incomplete() {
+      return this.tasks.filter(this.inProgress).length
+    }
+  },
+  methods: {
+    addTask() {
+      if(this.newTask) {
+        this.tasks.push({
+          title: this.newTask,
+          completed: false
+        });
+        this.newTask= ""
+      }
+    },
+    inProgress(task) {
+      return !this.isCompleted(task)
+    },
+    isCompleted(task) {
+      return task.completed
+    },
+    clearCompleted() {
+      this.tasks = this.tasks.filter(this.inProgress)
+    },
+    clearAll() {
+      this.tasks = [];
+    }
+  }
 };
 </script>
