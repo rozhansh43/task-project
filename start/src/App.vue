@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <task></task>
+    <task :tasks= "tasks">
+
+    </task>
   </div>
 </template>
 

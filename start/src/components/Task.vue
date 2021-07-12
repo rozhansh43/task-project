@@ -8,29 +8,43 @@
       <!-- form -->
       <div class="form">
         <input type="text" placeholder="New Task" />
-        <button><i class="fas fa-plus"></i></button>
+
+        <button>
+          <i class="fas fa-plus">
+          </i>
+        </button>
       </div>
       <!-- task lists -->
       <div class="taskItems">
         <ul>
-          <li>
-            <button>Learn Vue JS</button>
-            <button><i class="far fa-trash-alt"></i></button>
-          </li>
-          <li>
-            <button>Watch netflix</button>
-            <button><i class="far fa-trash-alt"></i></button>
+          <li v-for="task in tasks" :key="task.id">
+
+            <button>
+              {{ task.title }}
+            </button>
+
+            <button>
+              <i class="far fa-trash-alt">
+              </i>
+            </button>
           </li>
         </ul>
       </div>
       <!-- buttons -->
       <div class="clearBtns">
-        <button>Clear completed</button>
-        <button>Clear all</button>
+        <button>
+          Clear completed
+        </button>
+
+        <button>
+          Clear all
+        </button>
       </div>
       <!-- pending task -->
       <div class="pendingTasks">
-        <span>Pending Tasks: </span>
+        <span>
+          Pending Tasks: 
+        </span>
       </div>
     </div>
   </div>
@@ -39,5 +53,6 @@
 <script>
 export default {
   name: "Task",
+  props: ['tasks']
 };
 </script>
