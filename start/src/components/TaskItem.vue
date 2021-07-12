@@ -1,7 +1,7 @@
 <template>
   <div>
     <li>
-      <button>
+      <button :class="className">
         <i class="far fa-circle" aria-hidden="true">
         </i>
         {{ task.title }}
@@ -17,6 +17,15 @@
 
 <script>
 export default {
-  props: ['task']
+  props: ['task'],
+  computed: {
+    className() {
+      let classes = ['toggle'];
+      if(this.task.completed) {
+        classes.push('toggle-completed')
+      }
+      return classes;
+    }
+  }
 }
 </script>
