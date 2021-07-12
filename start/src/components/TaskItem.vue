@@ -1,7 +1,7 @@
 <template>
   <div>
     <li>
-      <button :class="className">
+      <button @click="$emit('complete')" :class="className">
         <i class="far fa-circle" aria-hidden="true">
         </i>
         {{ task.title }}

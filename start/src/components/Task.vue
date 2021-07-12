@@ -20,6 +20,7 @@
           <task-item 
           :task="task" 
           v-for="(task, index) in tasks"
+          @complete="completeTask"
           @remove="removeTask(index)"
           :key="task.id"
           >
@@ -90,6 +91,9 @@ export default {
     removeTask(index) {
       this.tasks.splice(index, 1)
     },
+    completeTask(task) {
+      task.completed = !task.completed;
+    }
   }
 };
 </script>
