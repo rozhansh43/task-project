@@ -20,6 +20,8 @@
           <li v-for="task in tasks" :key="task.id">
 
             <button>
+              <i class="far fa-circle" aria-hidden="true">
+              </i>
               {{ task.title }}
             </button>
 
@@ -43,7 +45,7 @@
       <!-- pending task -->
       <div class="pendingTasks">
         <span>
-          Pending Tasks: 
+          Pending Tasks: {{ tasks.length }}
         </span>
       </div>
     </div>
@@ -53,6 +55,6 @@
 <script>
 export default {
   name: "Task",
-  props: ['tasks']
+  props: ['tasks'],
 };
 </script>

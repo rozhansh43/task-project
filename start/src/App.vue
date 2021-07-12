@@ -3,16 +3,19 @@
     <task :tasks= "tasks">
 
     </task>
+    <task-details/>
   </div>
 </template>
 
 <script>
-import Task from "./components/Task";
+import Task from "@/components/Task";
+import TaskDetails from "@/components/TaskDetails";
 
 export default {
   name: "App",
   components: {
     Task,
+    TaskDetails,
   },
   data() {
     return {

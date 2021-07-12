@@ -47,6 +47,9 @@ button {
   color: #555;
   transition: all 0.3s linear;
 }
+button i {
+  margin-right: 5px;
+}
 
 button:focus {
   outline: none;
