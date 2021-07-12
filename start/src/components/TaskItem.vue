@@ -7,7 +7,7 @@
         {{ task.title }}
       </button>
 
-      <button>
+      <button @click="$emit('remove')">
         <i class="far fa-trash-alt">
         </i>
       </button>
@@ -18,6 +18,5 @@
 <script>
 export default {
   props: ['task']
-  
 }
 </script>

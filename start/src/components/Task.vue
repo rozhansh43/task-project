@@ -17,7 +17,12 @@
       <!-- task lists -->
       <div class="taskItems">
         <ul>
-          <task-item :task="task" v-for="task in tasks" :key="task.id">
+          <task-item 
+          :task="task" 
+          v-for="(task, index) in tasks"
+          @remove="removeTask(index)"
+          :key="task.id"
+          >
           </task-item>
         </ul>
       </div>
@@ -81,7 +86,10 @@ export default {
     },
     clearAll() {
       this.tasks = [];
-    }
+    },
+    removeTask(index) {
+      this.tasks.splice(index, 1)
+    },
   }
 };
 </script>
