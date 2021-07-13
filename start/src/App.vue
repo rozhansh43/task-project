@@ -3,7 +3,6 @@
     <task :tasks= "tasks">
 
     </task>
-    <task-details/>
   </div>
 </template>
 
