@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="form" @submit.prevent="emitAdd">
-      <input placeholder="New Task" v-model="name"/>
+      <input type="text" placeholder="New Task" v-model="newTask"/>
 
       <button type="submit">
         <i class="fas fa-plus">
@@ -15,13 +15,13 @@
 export default {
   data() {
     return {
-      name: null
+      newTask: null
     }
   },
   methods: {
     emitAdd() {
-    this.$emit('add',this.name)
-    this.name= null
+    this.$emit('add',this.newTask)
+    this.newTask= null
     }
   }
 }

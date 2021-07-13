@@ -21,16 +21,10 @@
         </ul>
       </div>
 
-      <div class="clearBtns">
-        <button @click="clearCompleted">
-          Clear completed
-        </button>
-
-        <button @click="clearAll">
-          Clear all
-        </button>
-      </div>
-
+      <clear-button @clearCompleted="clearCompleted" @clearAll="clearAll" />
+        <p>
+          {{ this.tasks}}
+        </p>
       <div class="pendingTasks">
         <span>
           Pending Tasks: {{ incomplete }}
@@ -43,13 +37,15 @@
 <script>
 import TaskItem from './TaskItem'
 import NewTask from './NewTask'
+import ClearButton from './ClearButton'
 
 export default {
   name: "Task",
   props: ['tasks'],
   components: {
     TaskItem,
-    NewTask
+    NewTask,
+    ClearButton
   },
   data() {
     return {
@@ -62,13 +58,13 @@ export default {
     }
   },
   methods: {
-    add(name) {
-        this.tasks.push({
-          title: this.name,
-          completed: false,
-          id : String(Math.floor(Math.random()*99999999)),
-          name,
-        });
+    add(newTask) {
+      this.tasks.push({
+        id: String(Math.floor(Math.random() * 999999999)),
+        title: this.newTask,
+        completed: false,
+        newTask,
+      })
     },
     inProgress(task) {
       return !this.isCompleted(task)
