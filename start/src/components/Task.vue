@@ -49,11 +49,6 @@ export default {
     NewTask,
     ClearButton
   },
-  data() {
-    return {
-    
-    }
-  },
   computed: {
     incomplete () {
       return this.tasks.filter(this.inProgress).length
