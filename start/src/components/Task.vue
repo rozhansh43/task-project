@@ -6,14 +6,7 @@
         <h1>To Do List</h1>
       </div>
 
-      <div class="form" @submit.prevent="addTask">
-        <input type="text" placeholder="New Task" v-model="newTask"/>
-
-        <button type="submit">
-          <i class="fas fa-plus">
-          </i>
-        </button>
-      </div>
+      <new-task @add="add"/>
 
       <div class="taskItems">
         <ul>
@@ -49,16 +42,18 @@
 
 <script>
 import TaskItem from './TaskItem'
+import NewTask from './NewTask'
 
 export default {
   name: "Task",
   props: ['tasks'],
   components: {
-    TaskItem
+    TaskItem,
+    NewTask
   },
   data() {
     return {
-      newTask:""
+    
     }
   },
   computed: {
@@ -67,14 +62,13 @@ export default {
     }
   },
   methods: {
-    addTask() {
-      if(this.newTask) {
+    add(name) {
         this.tasks.push({
-          title: this.newTask,
-          completed: false
+          title: this.name,
+          completed: false,
+          id : String(Math.floor(Math.random()*99999999)),
+          name,
         });
-        this.newTask= ""
-      }
     },
     inProgress(task) {
       return !this.isCompleted(task)
