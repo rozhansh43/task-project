@@ -2,9 +2,12 @@
   <div>
     <li>
       <button @click="$emit('complete')" :class="className">
-        <i class="far fa-circle" aria-hidden="true">
+        <i class="far fa-circle">
         </i>
-        {{ task.title }}
+
+        <span>
+          {{ task.title }}
+        </span>
       </button>
 
       <button @click="$emit('remove')">
@@ -17,7 +20,9 @@
 
 <script>
 export default {
-  props: ['task'],
+  props: {
+    task: { type: Array, default: () => [] }
+    },
   computed: {
     className() {
       let classes = ['toggle'];

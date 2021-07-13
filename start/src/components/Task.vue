@@ -41,7 +41,9 @@ import ClearButton from './ClearButton'
 
 export default {
   name: "Task",
-  props: ['tasks'],
+  props: {
+    tasks:{ type:Array , default: () => [] }
+    },
   components: {
     TaskItem,
     NewTask,
@@ -53,35 +55,35 @@ export default {
     }
   },
   computed: {
-    incomplete() {
+    incomplete () {
       return this.tasks.filter(this.inProgress).length
     }
   },
   methods: {
-    add(newTask) {
+    add (newTask) {
       this.tasks.push({
         id: String(Math.floor(Math.random() * 999999999)),
-        title: this.newTask,
+        title: newTask,
         completed: false,
         newTask,
       })
     },
-    inProgress(task) {
+    inProgress (task) {
       return !this.isCompleted(task)
     },
-    isCompleted(task) {
+    isCompleted (task) {
       return task.completed
     },
-    clearCompleted() {
+    clearCompleted () {
       this.tasks = this.tasks.filter(this.inProgress)
     },
-    clearAll() {
+    clearAll () {
       this.tasks = [];
     },
-    removeTask(index) {
+    removeTask (index) {
       this.tasks.splice(index, 1)
     },
-    completeTask(task) {
+    completeTask (task) {
       task.completed = !task.completed;
     }
   }

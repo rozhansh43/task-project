@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="form" @submit.prevent="emitAdd">
-      <input type="text" placeholder="New Task" v-model="newTask"/>
+      <input placeholder="New Task" v-model="newTask"/>
 
       <button type="submit">
         <i class="fas fa-plus">
