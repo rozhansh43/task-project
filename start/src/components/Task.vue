@@ -22,9 +22,7 @@
       </div>
 
       <clear-button @clearCompleted="clearCompleted" @clearAll="clearAll" />
-        <p>
-          {{ this.tasks}}
-        </p>
+
       <div class="pendingTasks">
         <span>
           Pending Tasks: {{ incomplete }}
